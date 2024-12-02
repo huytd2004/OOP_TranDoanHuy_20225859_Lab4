@@ -1,6 +1,6 @@
 package hust.soict.hedspi.aims.media;
 
-public class DigitalVideoDisc extends Disc {
+public class DigitalVideoDisc extends Disc implements Playable {
     //Khai báo thuộc tính
     private static int nbDigitalVideoDiscs = 0; // Class attribute can khai bao
 
@@ -29,6 +29,10 @@ public class DigitalVideoDisc extends Disc {
         this.director = director;
         this.length = length;
         setId(++nbDigitalVideoDiscs); // Update class variable and assign id
+    }
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
     }
 
 
