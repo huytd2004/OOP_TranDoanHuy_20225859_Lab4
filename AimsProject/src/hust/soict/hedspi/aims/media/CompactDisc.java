@@ -37,4 +37,17 @@ public class CompactDisc  extends Disc{
         }
         return length;
     }
+    public void play() {
+        // Print information about the CompactDisc
+        System.out.println("Playing CompactDisc: " + getTitle());
+        System.out.println("Artist: " + artist);
+        System.out.println("Category: " + getCategory());
+        System.out.println("Cost: " + getCost() + " USD");
+        System.out.println("Total Length: " + getLength() + " seconds");
+
+        // Play each track
+        for (Track track : tracks) {
+            track.play();
+        }
+    }
 }
