@@ -4,12 +4,12 @@ import java.util.List;
 public class Book extends Media{
     private static int nbBook = 0;
     private List<String> authors = new ArrayList<String>();
-    public Book(int id, String title, float cost) {
-        super(id, title, cost);
+    public Book(String title, float cost) {
+        super(title, cost);
         this.setId(++nbBook);
     }
-    public Book(int id, String title, String category, float cost) {
-        super(id, title, category, cost);
+    public Book(String title, String category, float cost) {
+        super(title, category, cost);
         this.setId(++nbBook);
     }
 
@@ -29,5 +29,13 @@ public class Book extends Media{
             return;
         }
         System.err.println("Don't exist author name");
+    }
+
+    @Override
+    public String toString() {
+        return String
+                .format("Book - %s - %s - %s : %.2f $", title, category,
+                        authors.isEmpty() ? "Unknown" : String.join(", ", authors), cost)
+                .replaceAll(" null | 0 ", " Unknown ");
     }
 }

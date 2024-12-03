@@ -8,6 +8,9 @@ public class CompactDisc  extends Disc{
     public String getArtist() {
         return artist;
     }
+    public CompactDisc(String title, String category, float cost) {
+        super(title, category, cost);
+    }
     public CompactDisc(String title, String category, String artist, float cost) {
         super(title, category,cost);
         this.artist = artist;
@@ -49,5 +52,10 @@ public class CompactDisc  extends Disc{
         for (Track track : tracks) {
             track.play();
         }
+    }
+    @Override
+    public String toString() {
+        return String.format("CD - %s - %s - %s - %dm. : %.2f $", title, category, artist, getLength(), cost)
+                .replaceAll(" null | 0 ", " Unknown ");
     }
 }
