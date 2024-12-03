@@ -1,15 +1,16 @@
 package hust.soict.hedspi.aims.store.Store;
 
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.Media;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Store {
-    private LinkedList<DigitalVideoDisc> itemsInStore = new LinkedList<DigitalVideoDisc>();
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
-
-    private boolean checkDVD(DigitalVideoDisc disc) {
-        for (DigitalVideoDisc digitalVideoDisc : itemsInStore) {
+    private boolean checkMedia(Media disc) {
+        for (Media digitalVideoDisc : itemsInStore) {
             if (digitalVideoDisc.equals(disc)) {
                 return true;
             }
@@ -17,8 +18,8 @@ public class Store {
         return false;
     }
 
-    public void removeDVD(DigitalVideoDisc disc) {
-        if(checkDVD(disc)) {
+    public void removeMedia(Media disc) {
+        if(checkMedia(disc)) {
             itemsInStore.remove(disc);
             System.out.println( disc.getTitle() + " 've been deleted from the store !");
         } else {
@@ -26,8 +27,8 @@ public class Store {
         }
     }
 
-    public void addDVD(DigitalVideoDisc disc) {
-        if(!checkDVD(disc)) {
+    public void addMedia(Media disc) {
+        if(!checkMedia(disc)) {
             itemsInStore.add(disc);
             System.out.println( disc.getTitle() + " 've been added to the store !");
         } else {
@@ -35,13 +36,22 @@ public class Store {
         }
 
     }
+    // tạo function searchByTitle
+    public Media searchByTitle(String title) {
+        for (Media media : itemsInStore) {
+            if (media.getTitle().equals(title)) {
+                return media;
+            }
+        }
+        return null;
+    }
 
     @Override //Dinh nghia lai phuong thuc trong lop Object cua thu vien java.lang
     public String toString() {
         StringBuilder string = new StringBuilder("****************STORE***************\nitems in the store: \n");
         if(itemsInStore.isEmpty()) string.append("There is no dvd in the store !\n");
         else {
-            for (DigitalVideoDisc dvd : itemsInStore) {
+            for (Media dvd : itemsInStore) {
                 string.append(dvd.getTitle() + " - " + dvd.getCost() + " $\n");
             }
         }
